@@ -65,10 +65,10 @@ resource "aws_instance" "dj_docker" {
 
   key_name               = "django-docker"
   vpc_security_group_ids = [aws_security_group.dj_docker_sg.id]
-  iam_instance_profile = aws_iam_instance_profile.cloudwatch_profile.name
+  iam_instance_profile   = aws_iam_instance_profile.cloudwatch_profile.name
 
-  user_data = file("${path.module}/cloudwatch_user_data.sh")
-  monitoring   = true
+  user_data  = file("${path.module}/cloudwatch_user_data.sh")
+  monitoring = true
 
 
   tags = {
