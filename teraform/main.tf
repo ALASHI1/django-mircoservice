@@ -118,3 +118,9 @@ resource "aws_cloudwatch_log_group" "dj_docker_log_group" {
 resource "aws_eip" "dj_docker_eip" {
   domain = "vpc"
 }
+
+
+resource "aws_eip_association" "dj_docker_eip_assoc" {
+  instance_id   = aws_instance.dj_docker.id
+  allocation_id = aws_eip.dj_docker_eip.id
+}

@@ -40,3 +40,4 @@ jobs:
             # Run the app
             docker-compose down
             docker-compose up -d --build
+          timeout: 60s  # Increase the timeout to handle delays
