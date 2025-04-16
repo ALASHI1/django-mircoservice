@@ -14,11 +14,14 @@ jobs:
 
     defaults:
       run:
-        working-directory: ./django-mircoservice/terraform
+        working-directory: terraform/
 
     steps:
       - name: ✅ Checkout code
         uses: actions/checkout@v3
+
+      - name: Show current directory contents
+        run: ls -R
 
       - name: 🔧 Set up Terraform
         uses: hashicorp/setup-terraform@v3
