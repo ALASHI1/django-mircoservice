@@ -40,12 +40,18 @@ jobs:
               sudo chmod +x /usr/local/bin/docker-compose
             fi
 
-            # Pull the latest code
-            mkdir -p ~/dj-dockerservice
-            cd ~/dj-dockerservice || git clone https://github.com/ALASHI1/django-mircoservice.git ~/dj-dockerservice
-            git pull origin main
+            # Clone or pull the latest code
+            if [ ! -d "~/dj-dockerservice/.git" ]; then
+              echo "Cloning repository..."
+              git clone https://github.com/ALASHI1/django-mircoservice.git ~/dj-dockerservice
+            else
+              echo "Pulling latest code..."
+              cd ~/dj-dockerservice
+              git pull origin main
+            fi
 
             # Run the app
+            cd ~/dj-dockerservice
             docker-compose down
             docker-compose up -d --build
           timeout: 2m  # Increase timeout to 2 minutes to handle delays during setup
