@@ -6,3 +6,8 @@ create_db
 *.pyc
 __pycache__/
 db.sqlite3
+
+terraform.tfstate
+terraform.tfstate.backup
+.terraform/
+.terraform.lock.hcl
