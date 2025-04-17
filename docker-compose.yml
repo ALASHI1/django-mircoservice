@@ -71,18 +71,6 @@ services:
       - backend
 
     user: celeryuser
-  
-  nginx:
-    build: ./nginx
-    container_name: nginx
-    ports:
-      - "80:80"
-    volumes:
-      - .:/app
-    depends_on:
-      - backend
-    networks:
-      - backend
 
 volumes:
   postgres_data:
