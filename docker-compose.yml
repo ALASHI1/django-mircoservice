@@ -23,7 +23,7 @@ services:
     build: .
     container_name: django_app
     entrypoint: /app/entrypoint.sh
-    command: python manage.py runserver 0.0.0.0:8000
+    command: gunicorn --bind 0.0.0.0:8000 core.wsgi:application
     environment:
       - RUN_MIGRATIONS=True
     volumes:
@@ -80,7 +80,7 @@ services:
     volumes:
       - .:/app  # Link the app's files for Nginx to access static
     depends_on:
-      - django
+      - backend
     networks:
       - backend
 
