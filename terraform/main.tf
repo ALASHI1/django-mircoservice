@@ -147,9 +147,9 @@ resource "aws_s3_bucket_versioning" "terraform_state_versioning" {
 
 terraform {
   backend "s3" {
-    bucket = "dj-docker-terraform-state-bucket-1"
-    key    = "infra/terraform.tfstate"
-    region = "eu-north-1"
+    bucket  = "dj-docker-terraform-state-bucket-1"
+    key     = "infra/terraform.tfstate"
+    region  = "eu-north-1"
     encrypt = true
   }
 }
