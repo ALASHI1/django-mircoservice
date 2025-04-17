@@ -143,6 +143,8 @@ resource "aws_s3_bucket_versioning" "terraform_state_versioning" {
   }
 }
 
+
+
 terraform {
   backend "s3" {
     bucket = "dj-docker-terraform-state-bucket-1"
