@@ -14,6 +14,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the Django project code
 COPY . .
 
+# Collect static files
+RUN python manage.py collectstatic --noinput
+
 # Copy and set permissions for the entrypoint script
 COPY entrypoint.sh /app/entrypoint.sh
 RUN chmod +x /app/entrypoint.sh

@@ -71,6 +71,18 @@ services:
       - backend
 
     user: celeryuser
+  
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    ports:
+      - "80:80"  # Expose port 80 to access the app
+    volumes:
+      - .:/app  # Link the app's files for Nginx to access static
+    depends_on:
+      - django
+    networks:
+      - backend
 
 volumes:
   postgres_data:
