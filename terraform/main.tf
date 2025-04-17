@@ -73,7 +73,7 @@ resource "aws_instance" "dj_docker" {
 
 
   tags = {
-    Name = "MyAmazonLinuxEC2"
+    Name = "dj_dockerEC2"
   }
 }
 
