@@ -1,6 +1,14 @@
 # Django Microservice - Dockerized Deployment
 
-This is a Django-based microservice application containerized using Docker. It includes PostgreSQL, Redis, Celery for background tasks. The infrastructure is managed with Terraform and deployed on AWS EC2.
+This is a Django-based microservice application containerized using Docker. It includes PostgreSQL, Redis, Celery for background tasks and Gunicorn as the production WSGI server. The infrastructure is managed with Terraform and deployed on AWS EC2.
+
+---
+
+### 🚀 Live Demo  
+**[http://13.48.146.116:8000](http://13.48.146.116:8000)**  
+**[http://13.48.146.116:8000/swagger](http://13.48.146.116:8000/swagger)**  
+
+> Deployed on an AWS EC2 instance using Gunicorn + Whitenoise
 
 ---
 
@@ -10,6 +18,7 @@ This is a Django-based microservice application containerized using Docker. It i
 - Redis + Celery for async task processing
 - Swagger (drf-yasg) for API documentation
 - Docker Compose for local orchestration
+- Gunicorn as production WSGI server
 - Terraform for AWS infrastructure (EC2, Security Groups, CloudWatch, S3)
 - GitHub Actions CI/CD deployment to EC2
 

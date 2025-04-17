@@ -8,6 +8,7 @@
 - **Task Queue:** Redis (via Docker)
 - **Deployment Target:** AWS EC2 instance (Amazon Linux)
 - **Container Orchestration:** Docker Compose
+- **Production Server:** Gunicorn (WSGI HTTP server for Python web apps)
 
 ---
 
@@ -15,7 +16,7 @@
 - Dockerfile installs all Python dependencies from `requirements.txt`
 - `entrypoint.sh` is used to conditionally run migrations and then serve the Django app using:
   ```bash
-  python manage.py runserver 0.0.0.0:8000
+  gunicorn --bind 0.0.0.0:8000 core.wsgi:application
   ```
 - `docker-compose.yml` runs the Django app.
 ---
@@ -45,3 +46,8 @@
 - `drf-yasg` is used for automatic API documentation.
 - Customization of endpoint ordering is possible using the `@swagger_auto_schema` decorator or defining viewsets
 
+---
+
+
+### **6. Architecture Diagram**
+![Architecture Diagram](assets/dj-docker.drawio.png)
