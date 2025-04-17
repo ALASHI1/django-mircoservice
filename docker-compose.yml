@@ -28,6 +28,7 @@ services:
       - RUN_MIGRATIONS=True
     volumes:
       - .:/app
+      - staticfiles:/app/staticfiles
     ports:
       - "8000:8000"
     env_file:
@@ -39,7 +40,6 @@ services:
         condition: service_healthy
     networks:
       - backend
-    
 
   redis:
     image: redis:7
