@@ -21,7 +21,7 @@ from drf_yasg import openapi
 from rest_framework import permissions
 from rest_framework.authentication import TokenAuthentication
 from django.http import JsonResponse
-from core.views import home
+from .views import home
 
 
 
