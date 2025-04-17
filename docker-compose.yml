@@ -76,9 +76,9 @@ services:
     build: ./nginx
     container_name: nginx
     ports:
-      - "80:80"  # Expose port 80 to access the app
+      - "80:80"
     volumes:
-      - .:/app  # Link the app's files for Nginx to access static
+      - .:/app
     depends_on:
       - backend
     networks:
