@@ -53,5 +53,5 @@ jobs:
             # Run the app
             cd ~/dj-dockerservice
             docker-compose down
-            docker-compose up -d --build
-          timeout: 2m  # Increase timeout to 2 minutes to handle delays during setup
+            docker-compose up -d --build --no-cache
+          timeout: 2m # Increase timeout to 2 minutes to handle delays during setup
