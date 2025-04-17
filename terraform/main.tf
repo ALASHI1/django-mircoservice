@@ -7,6 +7,7 @@ data "aws_vpc" "default" {
   default = true
 }
 
+
 resource "aws_security_group" "dj_docker_sg" {
   name        = "dj-docker-sg"
   description = "Security group for EC2 instance"
@@ -123,4 +124,30 @@ resource "aws_eip" "dj_docker_eip" {
 resource "aws_eip_association" "dj_docker_eip_assoc" {
   instance_id   = aws_instance.dj_docker.id
   allocation_id = aws_eip.dj_docker_eip.id
+}
+
+
+resource "aws_s3_bucket" "terraform_state" {
+  bucket = "dj-docker-terraform-state-bucket-1"
+
+  lifecycle {
+    prevent_destroy = true
+  }
+}
+
+resource "aws_s3_bucket_versioning" "terraform_state_versioning" {
+  bucket = aws_s3_bucket.terraform_state.id
+
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
+terraform {
+  backend "s3" {
+    bucket = "dj-docker-terraform-state-bucket-1"
+    key    = "infra/terraform.tfstate"
+    region = "eu-north-1"
+    encrypt = true
+  }
 }
